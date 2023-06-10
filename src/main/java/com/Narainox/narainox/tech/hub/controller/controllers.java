@@ -50,5 +50,18 @@ public class controllers {
         return responseEntity;
     }
 
+    @GetMapping("api/tutorials/published")
+    public ResponseEntity<List<Tutorials>> getPublishedTutorials()
+    {
+        ResponseEntity<List<Tutorials>> responseEntity=new ResponseEntity<List<Tutorials>>(tutorialsServices.getPublishedTutorials(true),HttpStatus.ACCEPTED);
+        return responseEntity;
+    }
+
+    @PutMapping("api/tutorials/{id}")
+    public ResponseEntity<String> updateTutorials(@PathVariable long id,@RequestBody Tutorials tutorials)
+    {
+        ResponseEntity<String> responseEntity=new ResponseEntity<String>(tutorialsServices.updateTutorails(id,tutorials),HttpStatus.OK);
+        return responseEntity;
+    }
 
 }

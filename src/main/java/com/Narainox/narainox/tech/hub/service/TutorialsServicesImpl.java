@@ -39,4 +39,23 @@ public class TutorialsServicesImpl implements TutorialsServices{
         tutorialsRepo.deleteAll();
         return "Deleted All Successfully!";
     }
+
+    @Override
+    public List<Tutorials> getPublishedTutorials(Boolean b) {
+        return tutorialsRepo.findByPublished(b);
+    }
+
+    @Override
+    public String updateTutorails(long id, Tutorials tutorials) {
+        Optional<Tutorials> tutorials1=tutorialsRepo.findById(id);
+        if (tutorials1.isPresent())
+        {
+            Tutorials tutorials2 = tutorials1.get();
+            tutorials2.setTitle(tutorials.getTitle());
+            tutorials2.setDescription(tutorials.getDescription());
+            tutorials2.setPublished(tutorials.isPublished());
+            tutorialsRepo.save(tutorials2);
+        }
+        return "Update Successfully!";
+    }
 }

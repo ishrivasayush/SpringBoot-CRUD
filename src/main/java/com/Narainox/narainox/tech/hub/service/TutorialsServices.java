@@ -13,4 +13,7 @@ public interface TutorialsServices {
     public List<Tutorials> getAllTutorials();
     public String deleteTutorialById(Long id);
     public String deleteTutorial();
+    List<Tutorials> getPublishedTutorials(Boolean b);
+
+    String updateTutorails(long id, Tutorials tutorials);
 }
